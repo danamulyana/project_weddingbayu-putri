@@ -1,7 +1,95 @@
-@import url('https://fonts.cdnfonts.com/css/photograph-signature');
-@import url('https://fonts.cdnfonts.com/css/port-lligat-sans');
-@import url('https://fonts.cdnfonts.com/css/playfair-display');
-@import url('https://fonts.cdnfonts.com/css/poppins');
+@font-face{
+    font-family:photograph signature;
+    font-style:normal;
+    font-weight:400;
+    font-display: swap;
+    src:local('Photograph Signature'),
+    url('/webfonts/Photograph\ Signature.ttf') format('woff')
+}
+
+@font-face{
+    font-family:port lligat sans;
+    font-style:normal;
+    font-display: swap;
+    font-weight:400;
+    src:local('Port Lligat Sans'),
+    url('/webfonts/PortLligatSans-Regular.ttf') format('woff')
+}
+
+// PlayFair display
+@font-face{
+    font-family:playfair display;
+    font-style:normal;
+    font-weight:400;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-Regular.ttf') format('woff')
+}
+
+@font-face{
+    font-family:playfair display;
+    font-style:normal;
+    font-weight:400;
+    font-display: swap;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay[wght].ttf') format('woff')
+}
+@font-face{
+    font-family:playfair display;
+    font-style:italic;
+    font-weight:400;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-Italic.woff') format('woff')
+}
+@font-face{
+    font-family:playfair display;
+    font-style:italic;
+    font-weight:400;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-Italic[wght].woff') format('woff')
+}
+@font-face{
+    font-family:playfair display;
+    font-style:normal;
+    font-weight:700;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-Bold.woff') format('woff')
+}
+@font-face{
+    font-family:playfair display;
+    font-style:italic;
+    font-weight:700;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-BoldItalic.woff') format('woff')
+}
+@font-face{font-family:playfair display;
+    font-style:normal;
+    font-weight:900;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-Black.woff') format('woff')
+}
+@font-face{
+    font-family:playfair display;
+    font-style:italic;
+    font-weight:900;
+    src:local('Playfair Display'),
+    url('/webfonts/PlayfairDisplay-BlackItalic.woff') format('woff')
+}
+@font-face{
+    font-family:poppins;
+    font-style:normal;
+    font-weight:400;
+    font-display: swap;
+    src:local('Poppins'),
+    url('/webfonts/Poppins-Regular.ttf') format('woff')
+}
+@font-face{
+    font-family:poppins;
+    font-style:normal;
+    font-weight:500;
+    font-display: swap;
+    src:local('Poppins'),
+    url('/webfonts/Poppins-Medium.ttf') format('woff')
+}
 
 :root{
     --title-font: 'Photograph Signature', sans-serif;

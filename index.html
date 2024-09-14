@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bayu & Putri - Wedding Invitation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="scss/styles.css">
+    <link rel="stylesheet" href="/plugins/fontawesome.min.css">
+    <link rel="stylesheet" href="/plugins/swiper-bundle.min.css">
+    <link href="/plugins/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scss/styles.min.css">
     <link rel="preload" href="/Assets/Preweed1.webp" as="image">
     <link rel="preload" href="/Assets/Preweed2.webp" as="image">
     <link rel="preload" href="/Assets/Preweed3.webp" as="image">
@@ -21,6 +18,7 @@
     <link rel="preload" href="/Assets/Preweed8.webp" as="image">
     <link rel="prefetch" href="/Assets/Preweed9.webp" as="image">
     <link rel="preload" href="/Assets/Preweed10.webp" as="image">
+    <link rel="prefetch" href="/webfonts/Photograph Signature.ttf" as="font" type="font/woff2">
 
 </head>
 <body>
@@ -172,7 +170,7 @@
             <div class="section-weddingdate__body">
                 <div class="section-weddingdate__wrap">
                     <div class="section-weddingdate__body--icon">
-                        <img src="/Assets//wedding_ring.svg" alt="Wedding ring" />
+                        <img src="/Assets/wedding_ring.svg" loading="lazy" alt="Wedding ring" />
                     </div>
                     <div class="section-weddingdate__heading">
                         <h2>Akad</h2>
@@ -189,7 +187,7 @@
                     <div class="section-weddingdate__body--location">
                         <i class="fa fa-location-dot"></i>
                         <p>Kp. mareleng 005/007 ds bojongsari, kec kedung waringin, kab bekasi</p>
-                        <a type="button" href="https://maps.app.goo.gl/4rKWX2M3FLbnW37Q6" target="_blank" class="button section-weddingdate__body--button">
+                        <a type="button" href="https://maps.app.goo.gl/ZpeSMhfEnoiP9vSNA" target="_blank" class="button section-weddingdate__body--button">
                             <i class="fa-regular fa-map"></i>
                             Klik Map
                         </a>
@@ -200,7 +198,7 @@
             <div class="section-weddingdate__body reverse">
                 <div class="section-weddingdate__wrap">
                     <div class="section-weddingdate__body--icon">
-                        <img src="/Assets//wedding_ring.svg" alt="Wedding ring" />
+                        <img src="/Assets/wedding_ring.svg" loading="lazy" alt="Wedding ring" />
                     </div>
                     <div class="section-weddingdate__heading">
                         <h2>Resepsi</h2>
@@ -217,7 +215,7 @@
                     <div class="section-weddingdate__body--location">
                         <i class="fa fa-location-dot"></i>
                         <p>Kp. mareleng 005/007 ds bojongsari, kec kedung waringin, kab bekasi</p>
-                        <a type="button" href="https://maps.app.goo.gl/4rKWX2M3FLbnW37Q6" target="_blank" class="button section-weddingdate__body--button">
+                        <a type="button" href="https://maps.app.goo.gl/ZpeSMhfEnoiP9vSNA" target="_blank" class="button section-weddingdate__body--button">
                             <i class="fa-regular fa-map"></i>
                             Klik Map
                         </a>
@@ -310,14 +308,14 @@
         <h5 class="footer-header" >Made With <i class="fa fa-heart"></i> With <a href=" https://github.com/danamulyana" target="_blank" rel="noopener noreferrer">Dana Mulyana</a></h5>
     </footer>
 
-    <button class="music-button" id="button-music">
+    <button class="music-button" id="button-music" aria-label="play music">
         <i class="fa-solid fa-compact-disc music-button__icon"></i>
     </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
+    <script src="/plugins/swiper-bundle.min.js"></script>
+    <script src="/plugins/lightbox-plus-jquery.min.js"></script>
+    <script src="/plugins/clipboard.min.js"></script>
+    <script src="/plugins/scrollreveal.js"></script>
+    <script src="main.min.js"></script>
 </body>
 </html>
