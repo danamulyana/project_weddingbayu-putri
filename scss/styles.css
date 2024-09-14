@@ -116,13 +116,13 @@ video {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .section-top__container {
   position: relative;
-  height: calc(100vh - var(--header-height));
+  height: 90%;
   text-align: center;
   display: grid;
   align-content: space-between;
@@ -143,11 +143,11 @@ video {
 }
 @media (max-width: 767px) {
   .section-top__container .widget-top__container .widget-container__heading {
-    font-size: var(--normal-font-size);
+    font-size: 1.275rem;
   }
 }
 .section-top__container .widget-bottom__container .widget-data {
-  margin-bottom: 20px;
+  margin-bottom: 2.25rem;
 }
 .section-top__container .widget-bottom__container .widget-data__heading {
   font-family: var(--body-font);
@@ -161,33 +161,33 @@ video {
   font-family: var(--body-font);
   font-weight: 300;
   text-transform: capitalize;
-  line-height: 20px;
+  line-height: 1.25rem;
   letter-spacing: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 .section-top__container .widget-data__heading {
   font-family: var(--title-font);
-  font-size: var(--biggest-font-size);
+  font-size: 3.198rem;
   letter-spacing: 1px;
   font-weight: 100;
   text-shadow: 1px 1px 5px rgba(123, 123, 123, 0.3);
 }
 .section-top__container .widget-data__default {
   font-family: var(--body-font);
-  font-size: var(--h3-font-size);
+  font-size: var(--h1-font-size);
   font-weight: 100;
   line-height: 1;
 }
 @media (max-width: 767px) {
   .section-top__container .widget-data__default {
-    font-size: var(--normal-font-size);
+    font-size: var(--h3-font-size);
   }
 }
 
 .button {
   display: inline-block;
   border-radius: 0.4rem;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.3rem;
   transition: 0.3s;
   background-color: var(--background-color);
   color: var(--white-color);
@@ -241,13 +241,13 @@ video {
 }
 .section-populate .widget-top__container .widget-container__heading {
   font-family: var(--body-font);
-  font-size: var(--h3-font-size);
+  font-size: var(--h1-font-size);
   font-weight: 100;
   line-height: 1;
 }
 @media (max-width: 767px) {
   .section-populate .widget-top__container .widget-container__heading {
-    font-size: var(--normal-font-size);
+    font-size: var(--h3-font-size);
   }
 }
 .section-populate .widget-bottom__container {
@@ -275,20 +275,20 @@ video {
 }
 .section-populate .widget-data__heading {
   font-family: var(--title-font);
-  font-size: var(--biggest-font-size);
+  font-size: 3.198rem;
   letter-spacing: 1px;
   font-weight: 100;
   text-shadow: 1px 1px 5px rgba(123, 123, 123, 0.3);
 }
 .section-populate .widget-data__default {
   font-family: var(--body-font);
-  font-size: var(--h3-font-size);
+  font-size: var(--h1-font-size);
   font-weight: 100;
   line-height: 1;
 }
 @media (max-width: 767px) {
   .section-populate .widget-data__default {
-    font-size: var(--normal-font-size);
+    font-size: var(--h3-font-size);
   }
 }
 
@@ -311,7 +311,7 @@ video {
           background-clip: text;
   font-family: var(--title-font);
   font-weight: var(--font-semi-bold);
-  font-size: 2.5rem;
+  font-size: 3.198rem;
   color: rgba(110, 193, 228, 0);
 }
 .section-ourpray .container-ourpray__title {
@@ -322,6 +322,7 @@ video {
   color: rgba(110, 193, 228, 0);
   font-weight: 400;
   line-height: 1;
+  font-size: 1.066rem;
 }
 .section-ourpray .container-ourpray__title.italic {
   font-style: italic;
@@ -343,7 +344,7 @@ video {
           background-clip: text;
   font-family: var(--title-font);
   font-weight: var(--font-semi-bold);
-  font-size: 2.5rem;
+  font-size: 3.198rem;
   color: rgba(110, 193, 228, 0);
 }
 .section-ourlove .container-ourlove.galery-mark {
@@ -355,7 +356,7 @@ video {
 .section-ourlove .container-ourlove__heading-galery {
   font-family: var(--title-font);
   font-weight: 400;
-  font-size: 2.2rem;
+  font-size: 2.399rem;
   line-height: 1;
 }
 .section-ourlove .container-ourlove-galery {
@@ -386,7 +387,7 @@ video {
   margin-bottom: 1.25rem;
 }
 .section-ourlove .container-ourlove-galery .galery__head .title-head {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   color: rgba(110, 193, 228, 0);
 }
 .section-ourlove .container-ourlove-galery .galery__head .title-rotate-left {
@@ -439,7 +440,7 @@ video {
 .section-ourlove .container-ourlove-galery .galery__body-widget h2 {
   text-align: right;
   margin: 0.5rem 0 0.25rem;
-  font-size: 1.875rem;
+  font-size: 2.25rem;
   font-family: var(--title-font);
   font-weight: 100;
 }
@@ -456,7 +457,7 @@ video {
   background-color: var(--second-color);
 }
 .section-weddingdate__heading {
-  font-size: 1.65rem;
+  font-size: 2rem;
   text-align: center;
 }
 .section-weddingdate__heading h2 {
@@ -496,18 +497,18 @@ video {
 }
 .section-weddingdate__body--date h3 {
   font-weight: 100;
-  font-size: 1.4rem;
+  font-size: 1.625rem;
   line-height: 1;
   margin: 0.5rem 0;
 }
 .section-weddingdate__body--date h2 {
   margin: 0.5rem 0;
   font-weight: 600;
-  font-size: 2.4rem;
+  font-size: 2.625rem;
   line-height: 1;
 }
 .section-weddingdate__body--date h2.time {
-  font-size: 1.12rem;
+  font-size: 1.25rem;
   margin: 1.5rem 0;
 }
 .section-weddingdate__body--sparator {
@@ -635,7 +636,7 @@ video {
 }
 
 .footer {
-  padding: 2rem;
+  padding: 4rem;
   text-align: center;
   font-size: 1rem;
   background-color: var(--background-color-alt);
