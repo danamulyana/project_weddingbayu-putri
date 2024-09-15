@@ -295,7 +295,8 @@ const loadRSVP = async () => {
 
     if (response.ok) {
         updateAttendanceCounts(result.counts, result.totalRSVP);
-        result.map(data => {
+        
+        result.data.map(data => {
             appendNewComment(data);
         })
 
