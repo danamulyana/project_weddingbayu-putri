@@ -201,7 +201,6 @@ document.getElementById('submit-rsvp').addEventListener('click', async function 
       const result = await response.json();
   
       if (response.ok) {
-        console.log(result);
         // Update the counts and the comments section
         appendNewComment(data);
   
@@ -219,7 +218,6 @@ document.getElementById('submit-rsvp').addEventListener('click', async function 
   
   // Function to update the counts in the UI
 function updateAttendanceCounts(counts, totalRSVP) {
-    console.log(totalRSVP)
     document.querySelector('.rsvp-attendance__comments-count span').innerText = totalRSVP;
     document.querySelector('.hadir').innerText = counts.hadir;
     document.querySelector('.tidak-hadir').innerText = counts.tidakHadir;
@@ -286,13 +284,6 @@ function timeAgo(dateString) {
 }  
 
 const loadRSVP = async () => {
-    const responseCount = await fetch('https://rsvp-danamulyana.vercel.app/api/rsvp/bayu&putri2024/count', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-    });
-
     const response = await fetch('https://rsvp-danamulyana.vercel.app/api/rsvp/bayu&putri2024', {
         method: 'GET',
         headers: {
@@ -301,17 +292,16 @@ const loadRSVP = async () => {
     });
 
     const result = await response.json();
-    const resultCount = await responseCount.json();
 
-    if (response.ok && responseCount.ok) {
-        updateAttendanceCounts(resultCount.counts, resultCount.totalRSVP);
+    if (response.ok) {
+        updateAttendanceCounts(result.counts, result.totalRSVP);
         result.map(data => {
             appendNewComment(data);
         })
 
         // Clear the form
         document.getElementById('attendance-form').reset();
-        } else {
+    } else {
         // Handle error returned by the server
         alert(`Error: ${result.message}`);
     }
