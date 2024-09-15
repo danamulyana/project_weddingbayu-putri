@@ -168,6 +168,156 @@ const musicShow = () => {
 }
 window.addEventListener('scroll', musicShow)
 
+document.getElementById('submit-rsvp').addEventListener('click', async function (event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+    
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+    const confirmation = document.getElementById('confirmation').value;
+  
+    if (!name || !message || !confirmation) {
+      alert('Please fill in all fields.');
+      return;
+    }
+  
+    // Create the payload for the API request
+    const data = {
+        eventId: "bayu&putri2024",
+        name: name,
+        message: message,
+        confirmation: confirmation
+    };
+  
+    try {
+      // Send data to the API endpoint using fetch
+      const response = await fetch('https://rsvp-danamulyana.vercel.app/api/rsvp', { // Replace with actual API URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        console.log(result);
+        // Update the counts and the comments section
+        // updateAttendanceCounts(result.attendanceCounts);
+        appendNewComment(data);
+  
+        // Clear the form
+        document.getElementById('attendanceForm').reset();
+      } else {
+        // Handle error returned by the server
+        alert(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Error submitting the form:', error);
+      alert('Failed to submit. Please try again later.');
+    }
+});
+  
+  // Function to update the counts in the UI
+function updateAttendanceCounts(counts, totalRSVP) {
+    console.log(totalRSVP)
+    document.querySelector('.rsvp-attendance__comments-count span').innerText = totalRSVP;
+    document.querySelector('.hadir').innerText = counts.hadir;
+    document.querySelector('.tidak-hadir').innerText = counts.tidakHadir;
+    document.querySelector('.ragu').innerText = counts.masihRagu;
+}
+  
+  // Function to append a new comment to the comments section
+function appendNewComment(data) {
+    const commentsSection = document.getElementById('comments-section');
+  
+    const commentDiv = document.createElement('li');
+    commentDiv.classList.add('rsvp-attendance__comments--section_item');
+  
+    const commentContent = `
+        <div class="comment-item__content">
+            <div class="comment-item__content-info">
+                <h2>${data.name}</h2>
+                <span data-tooltip="${data.confirmation.replace("_", " ")}">${data.confirmation === 'hadir' ? '<i class="fa-solid fa-circle-check"></i>' : data.confirmation === 'tidak-hadir' ? '<i class="fa-solid fa-circle-xmark"></i>' : '<i class="fa-solid fa-circle-question"></i>'}</span>
+            </div>
+            <div class="comment-item__content-body">
+                <p>${data.message}</p>
+            </div>
+            <div class="comment-item__content-footer">
+                <i class="fa fa-clock"></i><p>${timeAgo(data.createdAt)}</p>
+            </div>
+        </div>  
+    `;
+    
+    commentDiv.innerHTML = commentContent;
+    commentsSection.appendChild(commentDiv);
+}  
+
+function timeAgo(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const seconds = Math.floor((now - date) / 1000);
+  
+    let interval = Math.floor(seconds / 31536000); // 1 year = 31536000 seconds
+    if (interval >= 1) {
+      return interval === 1 ? `${interval} tahun yang lalu` : `${interval} tahun yang lalu`;
+    }
+  
+    interval = Math.floor(seconds / 2592000); // 1 month = 2592000 seconds
+    if (interval >= 1) {
+      return interval === 1 ? `${interval} bulan yang lalu` : `${interval} bulan yang lalu`;
+    }
+  
+    interval = Math.floor(seconds / 86400); // 1 day = 86400 seconds
+    if (interval >= 1) {
+      return interval === 1 ? `${interval} hari yang lalu` : `${interval} hari yang lalu`;
+    }
+  
+    interval = Math.floor(seconds / 3600); // 1 hour = 3600 seconds
+    if (interval >= 1) {
+      return interval === 1 ? `${interval} jam yang lalu` : `${interval} jam yang lalu`;
+    }
+  
+    interval = Math.floor(seconds / 60); // 1 minute = 60 seconds
+    if (interval >= 1) {
+      return interval === 1 ? `${interval} menit yang lalu` : `${interval} menit yang lalu`;
+    }
+  
+    return `Baru saja`; // If less than a minute ago
+}  
+
+const loadRSVP = async () => {
+    const responseCount = await fetch('https://rsvp-danamulyana.vercel.app/api/rsvp/bayu&putri2024/count', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    });
+
+    const response = await fetch('https://rsvp-danamulyana.vercel.app/api/rsvp/bayu&putri2024', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    });
+
+    const result = await response.json();
+    const resultCount = await responseCount.json();
+
+    if (response.ok && responseCount.ok) {
+        updateAttendanceCounts(resultCount.counts, resultCount.totalRSVP);
+        result.map(data => {
+            appendNewComment(data);
+        })
+
+        // Clear the form
+        document.getElementById('attendance-form').reset();
+        } else {
+        // Handle error returned by the server
+        alert(`Error: ${result.message}`);
+    }
+}
+
 window.onload = function() {
     // Saat halaman dimuat ulang, scroll kembali ke section pertama (section .top)
     setTimeout(() => {
@@ -203,6 +353,8 @@ document.addEventListener("DOMContentLoaded", () => {
             elem.textContent = dear;
         }
     })
+
+     loadRSVP();    
 
     document.querySelector('#saveCalendar').addEventListener("click", (e) => {
         e.stopPropagation();
@@ -284,4 +436,39 @@ document.addEventListener("DOMContentLoaded", () => {
     sr.reveal('.reverse > .galery__body > .galery__body-widget, .section-weddingdate__body--date > h3, .gift-container__rekening:nth-child(2)',{
         origin: 'left',
     })
+
+    const tooltip = document.createElement('div');  // Create tooltip element
+    tooltip.classList.add('tooltip');               // Add tooltip class
+    document.body.appendChild(tooltip);             // Append tooltip to the body
+
+    // Event listener for mouseenter (when hovering)
+    document.querySelectorAll('[data-tooltip]').forEach(function (element) {
+        element.addEventListener('mouseenter', function (e) {
+            const tooltipText = element.getAttribute('data-tooltip');  // Get tooltip text from data-tooltip attribute
+            tooltip.innerText = tooltipText;                           // Set tooltip text
+      
+            const rect = element.getBoundingClientRect();              // Get element position
+            const tooltipX = rect.left + window.scrollX + (rect.width / 2) - (tooltip.offsetWidth / 2);
+            const tooltipY = rect.top + window.scrollY - tooltip.offsetHeight - 10; // Position above element with extra space for arrow
+      
+            tooltip.style.left = `${tooltipX}px`;
+            tooltip.style.top = `${tooltipY}px`;
+      
+            tooltip.classList.add('visible');                          // Show tooltip
+        });
+      
+        // Event listener for mouseleave (when no longer hovering)
+        element.addEventListener('mouseleave', function () {
+            tooltip.classList.remove('visible');                       // Hide tooltip
+        });
+      
+          // Event listener for mouse movement, in case the tooltip position needs to be dynamic
+        element.addEventListener('mousemove', function (e) {
+            const tooltipX = e.pageX - (tooltip.offsetWidth / 2);
+            const tooltipY = e.pageY - tooltip.offsetHeight - 10;
+      
+            tooltip.style.left = `${tooltipX}px`;
+            tooltip.style.top = `${tooltipY}px`;
+        });
+    });
 })
