@@ -203,11 +203,10 @@ document.getElementById('submit-rsvp').addEventListener('click', async function 
       if (response.ok) {
         console.log(result);
         // Update the counts and the comments section
-        // updateAttendanceCounts(result.attendanceCounts);
         appendNewComment(data);
   
         // Clear the form
-        document.getElementById('attendanceForm').reset();
+        document.getElementById('attendance-form').reset();
       } else {
         // Handle error returned by the server
         alert(`Error: ${result.message}`);
